@@ -4,12 +4,14 @@ public class InteractuarConE : MonoBehaviour
 {
     public GameObject interactionMessage;
 
+    public MoneyManager moneyManager;
 
     public MercanciaScript Mercancia;
 
     void Start()
     {
         interactionMessage.SetActive(false);
+        moneyManager = FindFirstObjectByType<MoneyManager>();
     }
 
     void Update()
@@ -18,6 +20,7 @@ public class InteractuarConE : MonoBehaviour
         {
             if (Mercancia)
             {
+                moneyManager.UpdateMoney(-1);
                 Destroy(Mercancia.gameObject);
                 StopInteraction();
             }
